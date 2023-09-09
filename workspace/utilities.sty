@@ -1,0 +1,138 @@
+\ProvidesPackage{utilities}
+
+\usepackage[top=5mm,left=5mm,right=5mm,bottom=5mm,nohead]{geometry} % La «géométrie» de la page. Les marges ici sont serrées. ATTENTION : si ces paramètres ne sont pas précisés, le format de la page sera par défaut optimisé pour que l'article soit imprimé dans le sens alterné une page sur deux une marge plus ou moins forte à gauche ou à droite dans l'idée d'avoir des pages "de gauche" et des pages "de droite" dans un livre.
+\usepackage{mathtools,amssymb,bm,amsthm}                            % Pour des possibilités en math étendues (mathtools => amsmath), permet entre autres le \eqcref qui à l'instar du simple cref met les parenthèses autour pour citer une équation.
+\usepackage{fontspec}						                        % Pour un accès à d'autres polices d'écriture (pas sûr, à vérifier).
+\usepackage[french]{babel}						                    % Pour franciser LaTeX.
+\usepackage[babel=true]{csquotes}                                   % Pour une meilleure gestion des guillemets.
+\frenchspacing                                                      % Pour un fonctionnement français de l'espacement autour des signes de ponctuation.
+% déprécié : \usepackage[cyr]{aeguill}					            % Utilisation des guillements français « »
+\usepackage{float}							                        % Pour que les images soient bien placées par rapport au texte.
+\usepackage{upgreek}							                    % Pour plus de symboles tel que \Upphi.
+\usepackage{stmaryrd}						                        % Permet l'utilisation des brackets pour les entiers.
+\usepackage{caption}							                    % Pour caption une image (une légende).
+\usepackage{subcaption}						                        % /\ pareil
+\usepackage{xspace}							                        % Pour conserver les espaces (utile à babel).
+\usepackage{tikz}							                        % Pour dessin 2d et 3d, graphs et plein de choses dessinnées.
+\usepackage{tikz-3dplot}						                    % Pour plots 3d en tikz.
+\usepackage{standalone}						                        % Pour import des standalone tikz (non compilés).
+\usepackage{cancel}							                        % Pour barrer des trucs.
+\usepackage{unicode-math}					                        % Permet au moteur de comprendre des symboles tq ∅∉⇒∃⟶⋃∀∈ et d'user leur écriture dans la bonne police.
+\usepackage{standalone}						                        % Pour import des standalone tikz (non compilés).
+\usepackage[shortlabels]{enumitem}			                        % Pour les énumérations (+ ajustement shortlabels par K.).
+%\usepackage{yhmath}							                    % Pour les parenthèses au dessus de contenu maths.
+\usepackage[pdfencoding=auto]{hyperref}                             % Pour les liens. En règle générale il doit être le dernier package chargé.
+\usepackage{cleveref}						                        % Pour des réfs plus jolies. IMPÉRATIF : doit être chargé après le package hyperref.
+\usepackage{needspace}						                        % Pour la définition du style des exercices (utilisé par K., je n'ose pas l'enlever; sa description : « Pour empêcher les coupures des pages au mauvaise endroits »).
+\usepackage{mathrsfs}                                               % Pour le \mathscr.
+\usetikzlibrary{calc}                                               % Pour permettre des opérations élémentaires lors de l'entrée de coordonnées en tikz.
+
+\hypersetup{colorlinks=true, allcolors=blue}                        % Pour des liens en bleu (setup du package hyperref)
+
+
+% À noter que l'on peut paramétrer le package geometry localement comme suit au lieu du moment du chargement du package :
+% \geometry{
+% 	a4paper,
+% 	total={170mm,257mm},
+% 	left=20mm,
+% 	top=20mm,
+% }
+
+
+
+% Attention : à véfier et à sourcer, mais il me semble avoir lu sur un doc officiel que la norme française pour les notations des ensembles qui suivent était  \mathbf, même recommendation que l'AMS donc. Avis perso : je préfère écrire un R avec une barre en plus qu'un R gras au tableau.
+\def\R{\mathbb{R}}                       % Notation usuelle de l'ensemble des réels
+\def\C{\mathbb{C}}                       % Notation usuelle de l'ensemble des complexes
+\def\N{\mathbb{N}}                       % Notation usuelle de l'ensemble des entiers naturels
+\def\Z{\mathbb{Z}}                       % Notation usuelle de l'ensemble des entiers relatifs
+\def\Q{\mathbb{Q}}                       % Notation usuelle de l'ensemble des rationnels
+\def\D{\mathbb{D}}                       % Notation usuelle de l'ensemble des décimaux
+\def\K{\mathbb{K}}                       % Notation usuelle d'un corps quelconque
+\def\P{\mathbb{P}}                       % Notation usuelle de l'ensemble des nombres premiers, ou du P de probabilité
+\def\parties{\mathcal{P}}                % Le P de l'ensemble des parties, et du P de P(n) pour les démos par réccurence
+
+\def\alors{\implies}                     % Symbole  =>
+\def\ssi{\iff}                           % Symbole <=>
+\def\si{\Longleftarrow}                  % Symbole <=
+
+\def\vide{\varnothing}                   % Le symbole ensemble vide que je préfère (rond barré, contrairement au \emptyset qui dans la police que je côtoie donne un zéro barré).
+\def\im{\mathrm{Im}}                     % Le Im de l'image d'une application comme le Im de partie imaginaire d'un nombre complexe.
+\def\rel{\mathrm{Re}}                    % Le Re d'une notation usuelle d'une relation.
+
+% Commandes utiles et commandesque je ne redéfinis pas :
+% \binom{.}{.}      : notation parenthésée avec un terme au dessus et un en dessous pour une notation usuelle d'un coefficient binomial.
+% \mid              : la barre « | » qui sert parfois de notation au « divise », et parfois de séparateur dans la notation en compréhension d'un ensemble.
+% \pagestyle{empty} : désactive le foliotage (càd la numérotation des pages).
+% \mathfrak{.}      : police parfois utilisée pour noter le S du groupe symétrique (écriture gothique).
+% \setminus         : la barre oblique inversée « \ » dont on se sert parfois comme notation de la différence ensembliste.
+
+
+% Exemple de texturage d'un titre d'exercice 
+% \def \enonceTexture {\tikz[overlay]{\draw[blue, opacity=0.7] (-0.1,0.4) -- (-0.1,-2.1) (-0.15,0.3) -- (-0.15,-1.2) (-0.4,-0.1) -- (2.1,-0.1);}}
+% \def \correctionTexture {\tikz[overlay]{\draw[green, opacity=0.7] (-0.1,0.4) -- (-0.1,-2.1) (-0.15,0.3) -- (-0.15,-1.2) (-0.4,-0.1) -- (2.1,-0.1);}}
+
+% pour espacer un peu le texte (de K.) :
+\parskip=1mm
+\parindent=0mm
+\renewcommand{\baselinestretch}{1.3}
+\setlength{\abovedisplayskip}{2pt plus 4pt}
+\setlength{\belowdisplayskip}{3pt plus 4pt}
+\setlength{\abovedisplayshortskip}{1pt plus 4pt}
+\setlength{\belowdisplayshortskip}{2pt plus 4pt}
+
+% Les paramètres sont dans l'ordre : f,domaine,codomaine,x,f(x)
+\newcommand{\fonction}[5] {
+	#1 : \begin{array}{ c c c }
+		#2 & \rightarrow & #3 \\
+		#4 & \rightarrow & #5
+	\end{array}
+}
+
+% Déterminant 2x2
+\newcommand{\detDeux}[4] {
+	\begin{vmatrix}
+		{#1} & {#2} \\
+		{#3} & {#4}
+	\end{vmatrix}
+}
+
+\newcommand{\intersection}[1] { \bigcap\limits_{#1} }                  % Notation intersection indexée
+\newcommand{\union}[1] { \bigcup\limits_{#1} }                         % Notation union indexée
+\newcommand{\limite}[1] { \lim\limits_{#1} }                           % Notation lim en dessous de laquelle est écrit le 1er paramètre
+\newcommand{\pgcd}[2] { \mathrm{pgcd}\left(#1,#2 \right) }             % Notation pgcd(.,.)
+\newcommand{\norme}[1] { \lVert #1 \rVert }                            % Notation ||.||
+\newcommand{\suite}[2] { \left( #1 \right)_{#2}}                       % Notation (u_n)_n    , 1er paramètre = terme général, 2ème = index
+\newcommand{\ens}[1] { \left\{ \allowbreak #1 \allowbreak \right\} }   % Notation { . }
+\newcommand{\enstq}[2] { \left\{ \allowbreak #1 \allowbreak \ \middle| % Pour la notation en compréhension { #1 | #2 } des ensembles
+\ \allowbreak #2 \allowbreak \right\} }
+
+% Notations d'un intervalle entier, fermé ou ouvert à droite ou à gauche
+\newcommand{\intentierFF}[2]{ \left\rrbracket #1, #2, \right\llbracket }
+\newcommand{\intentierFO}[2]{ \left\rrbracket #1, #2, \right\rrbracket }
+\newcommand{\intentierOF}[2]{ \left\llbracket #1, #2, \right\llbracket }
+\newcommand{\intentierOO}[2]{ \left\llbracket #1, #2, \right\rrbracket }
+
+
+% Police sans sérif
+\renewcommand{\familydefault}{\sfdefault}
+
+
+% Propre au document en rédaction, à déplacer et à revoir car très primitif
+\newcommand{\info}[1]{\underline{#1}}
+\definecolor{couleurdemos}{RGB}{153,0,76}
+\newcommand{\demo}[1]{\textcolor{couleurdemos}{\underline{#1}}}
+\def\todo{\textcolor{red}{\textbf{à faire}}}
+\def\cqfd{\textbf{cqfd}}
+\newcommand{\docpart}[1] {
+	\begin{center}
+		\begin{tikzpicture}
+			
+			\node[gray] (partname) at (0,0) {\Large #1};
+			\draw[gray] (partname.west) + (-0.5,0) -- ++ (-4,0);
+			\draw[gray] (partname.east) + (0.5,0) -- ++ (4,0); 
+			%\draw[gray] (0,0) -- (2,0) node[anchor=west] at (0,0) {\Large #1} -- ++ (1,0);% -- [anchor=west] ++ (2,0);% node[black] at (0,0) {#1};
+			%\node at (0,0) {#1};
+			
+		\end{tikzpicture}
+	\end{center}	
+}

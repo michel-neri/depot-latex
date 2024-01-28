@@ -6,7 +6,13 @@
   </tr>
   <tr>
      <td align='center'>Projet <code>Modèle corrigé DS</code></td>
-     <td align='center'>Modèle <code>Cours Tle Compl</code></td>
+     <td align='center'>Projet <code>Modèle cours Tle Compl</code></td>
+  </tr>
+  <tr>
+    <td colspan='2'><img src='Projet%20MarkdownMaths/icone.png' align='center' width='800'></td>
+  </tr>
+  <tr>
+    <td colspan='2' align='center'>Projet <code>MarkdownMaths</code></td>
   </tr>
  </table>
 

@@ -1,4 +1,4 @@
-Dépot personnel de certains répertoires de projets persos (un projet pouvant désigner une simple fiche de correction).
+Dépôt personnel de certains répertoires de projets persos (un projet pouvant désigner une simple fiche de correction).
 
 Le fichier `utilities.sty` est le document le plus important sur ce dépôt : c'est le paquet que je référence dans tous mes projets. Il contient pléthore de commandes fondamentales et d'importations d'autres paquets utiles et succintement commentés.
 Il est à noter que la quantité de paquets importés dans `utilities.sty` induit une compilation particulièrement longue.

@@ -1,3 +1,17 @@
+
+<table align='center'>
+  <tr>
+    <td><img src='Modèle%20corrigé%20DS/icon.png' align='center' width='400'></td>
+    <td><img src='Modèle cours Tle Compl/icone.png' align='center' width='400'></td>
+  </tr>
+  <tr>
+     <td align='center'>Projet <code>Modèle corrigé DS</code></td>
+     <td align='center'>Modèle <code>Cours Tle Compl</code></td>
+  </tr>
+ </table>
+
+
+
 Dépôt personnel de certains répertoires de projets persos (un projet pouvant désigner une simple fiche de correction).
 
 Projets sur ce dépôt :
@@ -22,12 +36,4 @@ lualatex --output-directory=./output/ main.tex
 Tous mes projets sont situés dans des répertoires eux-mêmes situés dans un répertoire commun nommé `workspace`. Ce super-répertoire porte le `utilities.sty` ainsi commun à tous les projets.
 
 :x: Il reste énormément de choses à améliorer et à ajouter. Certains fichiers sont longs, trop longs et pourraient bénéficier d'une réduction de contenu d'un facteur 5 à l'aide d'outils que je projette de m'écrire (e.g. paquet de construction de tableaux de signe / vars, paquet de construction de schéma très simplifiée).
-
-Voici quelques captures d'écrans de ce que comporte ce dépôt :
-
-<p align='center'>
-  <img src='Modèle%20corrigé%20DS/icon.png' width='400'>
-</p>
-
-<p align='center'>Projet <code>Modèle corrigé DS</code></p>
 

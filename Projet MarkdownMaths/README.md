@@ -1,0 +1,3 @@
+Pour compiler : se mettre dans le répertoire principal (celui comprenant le fichier `main.py`), puis exécuter la commande `python main.py`. Ce script compilera tous les fichiers markdown contenus dans le répertoire `documents` et placera les résultats (avec les noms de fichiers correspondants) dans le répertoire `documents conv`.
+
+À noter : il est possible de ne compiler qu'un seul fichier en passant en plus en paramètre le nom du fichier (ou une chaîne de caractère s'en rapprochant, le script trouvera tout seul le fichier dont le nom se rapproche le plus du nom passé en paramètre). Par exemple si je ne veux compiler que le fichier `tutoriel.md`, je peux exécuter `python main.py tuto`.

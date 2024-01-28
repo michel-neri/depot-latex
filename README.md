@@ -4,3 +4,10 @@ Le fichier `utilities.sty` est le document le plus important sur ce dépôt : c'
 Il est à noter que la quantité de paquets importés dans `utilities.sty` induit une compilation particulièrement longue.
 
 :heavy_exclamation_mark: Pour le moment tous les répertoires et fichiers contenus sur cet espace sont sales. Aucune tenue rédactionnelle n'est à ce jour (28/01/2024) garantie.
+
+
+Voici quelques captures d'écrans de ce que comporte de dépôt :
+
+![Capture d'écran d'un corrigé de DS] (Modèle corrigé DS/icon.png)
+
+*Projet `Modèle corrigé DS`*

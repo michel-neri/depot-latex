@@ -8,6 +8,6 @@ Il est à noter que la quantité de paquets importés dans `utilities.sty` indui
 
 Voici quelques captures d'écrans de ce que comporte de dépôt :
 
-![Capture d'écran d'un corrigé de DS] (Modèle corrigé DS/icon.png)
+![Capture d'écran d'un corrigé de DS](Modèle corrigé DS/icon.png)
 
 *Projet `Modèle corrigé DS`*

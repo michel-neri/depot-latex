@@ -14,6 +14,13 @@
   <tr>
     <td colspan='2' align='center'>Projet <code>MarkdownMaths</code></td>
   </tr>
+  <tr>
+    <td colspan='2'><img src='Modele%20fiche%20resume/icon.png' align='center' width='800'></td>
+  </tr>
+  <tr>
+    <td colspan='2' align='center'>Projet <code>Modele fiche resume</code></td>
+  </tr>
+  
  </table>
 
 

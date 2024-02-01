@@ -31,7 +31,7 @@ Projets sur ce dépôt :
 - Exemple de correction de DS (avec les commandes et environnements correspondants).
 - Exemple de cours (Tle Complémentaire : Limites et continuité de fonctions).
 - Pré-processeur markdown permettant de rédiger des cours, fiches synthèses et autre en markdown. Le pré-processeur compile le tout et donne un rendu très satisfaisant, assurant un gain de temps considérable pour la rédaction de certains types de documents.
-- Modèle de fiche résumée de quelque chose (Avec en-tête légèrement stylisée, filigrane à chaque page et petit tableau vite fait avec des couleurs).
+- Modèle de fiche résumée de quelque chose (avec en-tête légèrement stylisée, filigrane à chaque page et petit tableau vite fait avec des couleurs).
 
 ---
 

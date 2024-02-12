@@ -9,6 +9,12 @@
      <td align='center'>Projet <code>Modèle cours Tle Compl</code></td>
   </tr>
   <tr>
+    <td colspan='2'><img src='Pages%20de%20garde%20LaTeX%20TikZ/icone.png' align='center' width='800'></td>
+  </tr>
+  <tr>
+    <td colspan='2' align='center'>Projet <code>Modèles de pages de gardes</code></td>
+  </tr>
+  <tr>
     <td colspan='2'><img src='Projet%20MarkdownMaths/icone.png' align='center' width='800'></td>
   </tr>
   <tr>
@@ -30,6 +36,7 @@ Dépôt personnel de certains répertoires de projets persos (un projet pouvant 
 Projets sur ce dépôt :
 - Exemple de correction de DS (avec les commandes et environnements correspondants).
 - Exemple de cours (Tle Complémentaire : Limites et continuité de fonctions).
+- Un document qui comprend trois modèles de pages de gardes / couverture. Les modèles sont décalqués d'internet et servent surtout de modèles d'un point de vue LaTeX et TikZ, mais sont sufissament paramétrés pour pouvoir être réutilisés à souhait.
 - Pré-processeur markdown permettant de rédiger des cours, fiches synthèses et autre en markdown. Le pré-processeur compile le tout et donne un rendu très satisfaisant, assurant un gain de temps considérable pour la rédaction de certains types de documents.
 - Modèle de fiche résumée de quelque chose (avec en-tête légèrement stylisée, filigrane à chaque page et petit tableau vite fait avec des couleurs).
 

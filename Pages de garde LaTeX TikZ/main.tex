@@ -1,0 +1,278 @@
+\documentclass[a4paper,french,12pt,dvipsnames]{memoir}
+
+% Normalement l'utilitaire ne comprend que le paquet TikZ et peut-être son sous-paquet calc d'utilse pour ce doc. À replacer ici.
+\usepackage{../utilities}
+\usepackage{graphicx}
+
+\usetikzlibrary{shadings} % Pour les gradients
+
+\geometry{
+	a4paper,
+	nohead,
+	total={170mm,257mm},
+	left=20mm,
+	right=20mm,
+	top=20mm,
+	bottom=25mm
+}
+
+\newfontfamily\covermaintitlefont{QTHelvet-Black}
+\newcommand{\covermaintitle}[1]{\bgroup\covermaintitlefont{#1}\egroup}
+\newfontfamily\covermaintitlefontbis{QTFuture}
+\newcommand{\covermaintitlebis}[1]{\bgroup\fontsize{50pt}{0pt}\selectfont \covermaintitlefontbis{#1}\egroup}
+
+\begin{document}
+
+\pagestyle{empty}
+
+\begin{tikzpicture}[remember picture,overlay,shift=(current page.south west),x=1pt,y=1pt]
+	
+	\def\rTopLeft{105}
+	\def\gTopLeft{98}
+	\def\bTopLeft{173}
+	\def\rBottomLeft{131}
+	\def\gBottomLeft{192}
+	\def\bBottomLeft{193}
+	
+	
+	\def\rTopRight{108}
+	\def\gTopRight{34}
+	\def\bTopRight{166}
+	\def\rBottomRight{150}
+	\def\gBottomRight{233}
+	\def\bBottomRight{198}
+	
+	
+	\def\amountw{12}
+	\def\amounth{7}
+	
+	\def\rectw{\pagewidth / \amountw}
+	\def\recth{\pageheight / \amounth}
+	
+	\foreach \x [parse=true] in {0,1,...,\amountw} {
+		
+		\pgfmathsetmacro{\shiftydown}{int(random(-\recth,0))}%
+		\foreach \y [parse=true] in {0,1,...,\amounth+1} {
+			
+			
+			\pgfmathsetmacro\t{\y / (\amounth+1)}
+			\pgfmathsetmacro\s{\x / \amountw}
+			
+			\pgfmathsetmacro{\noise}{int(random(0,10))}
+			
+			
+			\pgfmathsetmacro{\rLeft}{min(255,max(0,\t * \rBottomLeft + (1-\t) * \rTopLeft + \noise))}
+			\pgfmathsetmacro{\gLeft}{min(255,max(0,\t * \gBottomLeft + (1-\t) * \gTopLeft + \noise))}
+			\pgfmathsetmacro{\bLeft}{min(255,max(0,\t * \bBottomLeft + (1-\t) * \bTopLeft + \noise))}
+			
+			\pgfmathsetmacro{\rRight}{min(255,max(0,\t * \rBottomRight + (1-\t) * \rTopRight + \noise))}
+			\pgfmathsetmacro{\gRight}{min(255,max(0,\t * \gBottomRight + (1-\t) * \gTopRight + \noise))}
+			\pgfmathsetmacro{\bRight}{min(255,max(0,\t * \bBottomRight + (1-\t) * \bTopRight + \noise))}
+			
+			\pgfmathsetmacro\r{\s * \rLeft + (1-\s) * \rRight}
+			\pgfmathsetmacro\g{\s * \gLeft + (1-\s) * \gRight}
+			\pgfmathsetmacro\b{\s * \bLeft + (1-\s) * \bRight}
+			
+			\definecolor{colrect}{RGB}{\r,\g,\b}
+			\fill[colrect] ({\x / \amountw * \pagewidth},{\y / \amounth * \pageheight + \shiftydown}) rectangle ++(\rectw, \recth);
+		}
+		
+	}
+	
+	\node[white] at (0.5\pagewidth,0.7\pageheight) {\fontsize{50pt}{0pt}\selectfont \covermaintitle{Titre}};
+	
+\end{tikzpicture}
+
+\clearpage
+
+\definecolor{orangebas}{HTML}{EE751F}
+\definecolor{rougehaut}{HTML}{F33633}
+\definecolor{marronbas}{HTML}{291C1A}
+\definecolor{marronhaut}{HTML}{36291F}
+\definecolor{marronhautblanchi}{HTML}{3D2F24}
+
+\definecolor{grisatrebande}{HTML}{CCCCCC}
+\definecolor{grisatrebandeB}{HTML}{DDDDDD}
+\definecolor{grisatrebandeC}{HTML}{EEEEEE}
+
+\definecolor{couleurtitremarron}{HTML}{24150F}
+\definecolor{couleurbarre}{HTML}{42261A}
+\definecolor{couleurannee}{HTML}{F56816}
+
+\definecolor{couleuricones}{HTML}{9C8983}
+
+\begin{tikzpicture}[remember picture,overlay,shift=(current page.south west),x=1pt,y=1pt]
+	
+	% Partie orangée
+	\fill[top color=rougehaut,bottom color=orangebas,draw=white] (0.4\pagewidth,-1) .. controls (0.8\pagewidth,0.55\pageheight) and (0.2,0.7\pageheight) .. (0.4\pagewidth,\pageheight+1) -- (0,\pageheight+1) -- (0,-1) -- cycle;
+	
+	% Partie marron
+	\fill[top color=marronhaut,bottom color=marronbas] (0.37\pagewidth,0) .. controls (0.55\pagewidth,0.35\pageheight) and (0.05\pagewidth,0.75\pageheight) .. (0.2\pagewidth,\pageheight) -- (0,\pageheight) -- (0,0) -- cycle;
+	
+	% Petite partie marron
+	\fill[top color=marronhautblanchi,bottom color=marronbas] (0.32\pagewidth,0) .. controls (0.42\pagewidth,0.3\pageheight) .. (0,0.6\pageheight) -- (0,0) -- cycle;
+	
+	% Pseudo bande grisâtre bas
+	\fill[top color=white,bottom color=grisatrebande,draw=white] (0.55\pagewidth,-1) -- (0.57\pagewidth,-1) -- (0.75\pagewidth,0.3\pageheight) -- (0.735\pagewidth,0.3\pageheight) -- cycle;
+	% Pseudo bande grisâtre haut
+	\fill[top color=grisatrebande,bottom color=white,draw=white] (0.7\pagewidth,\pageheight) -- (0.75\pagewidth,\pageheight) -- (0.6\pagewidth,0.7\pageheight) -- cycle;
+	
+	% Bande grisâtre incurvée gauche
+	\fill[top color=white,bottom color=grisatrebandeB,draw=white] (0.45\pagewidth,-1) -- (0.55\pagewidth,-1) .. controls (0.5\pagewidth,0) .. (0.63\pagewidth,0.3\pageheight) -- cycle;
+	% Bande grisâtre incurvée droite
+	\fill[top color=white,bottom color=grisatrebandeB,draw=white] (0.65\pagewidth,-1) -- (0.75\pagewidth,-1) .. controls (0.7\pagewidth,0) .. (0.83\pagewidth,0.3\pageheight) -- cycle;
+	
+	\node[couleurtitremarron,anchor=east] (titremarron) at (0.9\pagewidth,0.65\pageheight) {\fontsize{50pt}{0pt}\selectfont \covermaintitle{Intitulé}};
+	\node[couleurtitremarron,anchor=north east] (titremarronbis) at (titremarron.south east) {\fontsize{47pt}{0pt}\selectfont \covermaintitle{machin}};
+	\fill[couleurbarre] ($(titremarronbis.south)+(0,-25)$) rectangle ($(titremarronbis.south east)+(-5,-27)$);
+	\node[couleurannee,anchor=north east] at ($(titremarronbis.south east)+(0,-35)$) {\fontsize{48pt}{0pt}\selectfont \covermaintitle{2024}};
+	
+	
+	\node[couleurtitremarron,anchor=east] (textehautA) at (0.9\pagewidth,0.9\pageheight) {\fontsize{16pt}{0pt}\selectfont \covermaintitle{ÉTRANGETÉS}};
+	\node[couleurtitremarron,anchor=north east] (textehautB) at (textehautA.south east) {\fontsize{16pt}{0pt}\selectfont \covermaintitle{TRÈS INTÉRÉSSANTES}};
+	\fill[couleurbarre] ($(textehautB.south)+(0,-10)$) rectangle ($(textehautB.south east)+(-5,-12)$);
+	\node[couleurtitremarron,anchor=north east] at ($(textehautB.south east)+(0,-20)$) {\fontsize{12pt}{0pt}\selectfont \covermaintitle{ÉCRITES PAR MICHEL}};
+	
+	\coordinate (coordsiconeun) at (0.8\pagewidth,0.05\pageheight);
+	\coordinate (coordsiconede) at (0.85\pagewidth,0.05\pageheight);
+	\coordinate (coordsiconetr) at (0.9\pagewidth,0.05\pageheight);
+	\draw[couleuricones,draw=couleuricones,very thick] (coordsiconeun) circle (13pt) node {$\int$};
+	\draw[couleuricones,draw=couleuricones,very thick] (coordsiconede) circle (13pt) node {$\sum$};
+	\draw[couleuricones,draw=couleuricones,very thick] (coordsiconetr) circle (13pt) node {$\prod$};
+	
+	\node[white] (textecontenu) at (0.2\pagewidth,0.23\pageheight) {\fontsize{13pt}{0pt}\selectfont \textbf{CONTENU DU DOCUMENT}};
+	
+	\coordinate (pointun) at ($(textecontenu.south west)+(0, -35)$);
+	\coordinate (pointde) at ($(     pointun)+(0, -30)$);
+	\coordinate (pointtr) at ($(     pointde)+(0, -30)$);
+	
+	\node[anchor=west,white] at ($(pointun)+(5,0)$) {Élément clef n°1 du document};
+	\node[anchor=west,white] at ($(pointde)+(5,0)$) {Élément clef n°2 du document};
+	\node[anchor=west,white] at ($(pointtr)+(5,0)$) {Élément clef n°3 du document};
+	
+	% Trois triangles "points clefs" du document
+	\fill[white] ($(pointun)+(-3,-3)$) -- ++(6,3) -- ++(-6,3) -- cycle;
+	\fill[white] ($(pointde)+(-3,-3)$) -- ++(6,3) -- ++(-6,3) -- cycle;
+	\fill[white] ($(pointtr)+(-3,-3)$) -- ++(6,3) -- ++(-6,3) -- cycle;
+	
+\end{tikzpicture}
+
+
+\clearpage
+
+
+
+\def\nodezero        {(0,0)}
+\def\nodeun          {(59,0)}
+\def\nodedeux        {(118,0)}
+\def\nodetrois       {(144,0)}
+\def\nodequatre      {(176,0)}
+\def\nodecinq        {(246,0)}
+\def\nodesix         {(315,0)}
+\def\nodesept        {(376,0)}
+\def\nodehuit        {(479,0)}
+\def\nodeneuf        {(37,98)}
+\def\nodedix         {(138,11)}
+\def\nodeonze        {(213,64)}
+\def\nodedouze       {(413,43)}
+\def\nodetreize      {(459,17)}
+\def\nodequatorze    {(0,131)}
+\def\nodequinze      {(0,163)}
+\def\nodeseize       {(71,130)}
+\def\nodedixsept     {(220,77)}
+
+\def\nodetrenteneuf  {(0,79)}
+
+\def\nodedixhuit     {(78,841)}
+\def\nodedixneuf     {(101,810)}
+\def\nodevingt       {(178,747)}
+\def\nodevingtetun   {(246,700)}
+\def\nodevingtdeux   {(299,714)}
+\def\nodevingttrois  {(500,513)}
+\def\nodevingtquatre {(595,475)}
+\def\nodevingtcinq   {(258,733)}
+\def\nodevingtsix    {(338,768)}
+\def\nodevingtsept   {(595,605)}
+\def\nodevingthuit   {(568,727)}
+\def\nodevingtneuf   {(533,754)}
+\def\nodetrente      {(209,841)}
+\def\nodetrenteetun  {(227,841)}
+\def\nodetrentedeux  {(595,841)}
+\def\nodetrentetrois {(425,841)}
+\def\nodetrentequatre{(501,800)}
+\def\nodetrentecinq  {(476,841)}
+\def\nodetrentesix   {(595,796)}
+\def\nodetrentesept  {(595,841)}
+\def\nodetrentehuit  {(571,841)}
+  
+
+ \newcommand{\jolitri}[6]{
+ 	\definecolor{couleur}{RGB}{#4,#5,#6};
+	\fill[couleur,draw=couleur,very thin] let \p{0}=#1, \p{1}=#2, \p{2}=#3 in
+	({\x{0} / 595 * \pagewidth},{(841 - \y{0}) / 841 * \pageheight}) --
+	({\x{1} / 595 * \pagewidth},{(841 - \y{1}) / 841 * \pageheight}) --
+	({\x{2} / 595 * \pagewidth},{(841 - \y{2}) / 841 * \pageheight}) -- cycle;
+ }
+ 
+ \newcommand{\joliquad}[7]{
+ 	\definecolor{couleur}{RGB}{#5,#6,#7};
+	\fill[couleur,draw=couleur,very thin] let \p{0}=#1, \p{1}=#2, \p{2}=#3, \p{3}=#4 in
+	({\x{0} / 595 * \pagewidth},{(841 - \y{0}) / 841 * \pageheight}) --
+	({\x{1} / 595 * \pagewidth},{(841 - \y{1}) / 841 * \pageheight}) --
+	({\x{2} / 595 * \pagewidth},{(841 - \y{2}) / 841 * \pageheight}) --
+	({\x{3} / 595 * \pagewidth},{(841 - \y{3}) / 841 * \pageheight}) -- cycle;
+}
+
+
+\begin{tikzpicture}[remember picture,overlay,shift=(current page.south west),x=1pt,y=1pt]
+	
+	\joliquad{\nodeseize}{\nodedix}{\nodeonze}{\nodedixsept}     {148}{0}{255}
+	\joliquad{\nodezero}{\nodeun}{\nodeneuf}{\nodetrenteneuf}    {53}{0}{255}
+	\joliquad{\nodeun}{\nodedeux}{\nodedix}{\nodeneuf}           {101}{0}{255}
+	\jolitri {\nodedeux}{\nodedix}{\nodetrois}                   {141}{0}{255}
+	\joliquad{\nodetrois}{\nodedix}{\nodeonze}{\nodequatre}      {169}{0}{255}
+	\jolitri {\nodequatre}{\nodedixsept}{\nodecinq}              {233}{0}{254}
+	\jolitri {\nodecinq}{\nodedixsept}{\nodesix}                 {219}{0}{254}
+	\joliquad{\nodesix}{\nodedixsept}{\nodedouze}{\nodesept}     {255}{0}{151}
+	\joliquad{\nodesept}{\nodedouze}{\nodetreize}{\nodehuit}     {255}{0}{51}
+	\jolitri {\nodetrenteneuf}{\nodeneuf}{\nodequatorze}         {9}{0}{255}
+	\jolitri {\nodequinze}{\nodeneuf}{\nodequatorze}             {7}{0}{200}
+	\jolitri {\nodequinze}{\nodeneuf}{\nodeseize}                {73}{0}{255}
+	\jolitri {\nodeneuf}{\nodeseize}{\nodedix}                   {121}{0}{255}
+	
+	\joliquad{\nodedixhuit}{\nodedixneuf}{\nodevingt}{\nodetrente}                 {9}{25}{255}
+	\joliquad{\nodetrente}{\nodetrenteetun}{\nodevingtcinq}{\nodevingt}            {5}{83}{255}
+	\joliquad{\nodetrenteetun}{\nodetrentedeux}{\nodevingtsix}{\nodevingtcinq}     {2}{113}{255}
+	\jolitri {\nodetrentedeux}{\nodetrentetrois}{\nodevingtsix}                    {0}{205}{240}
+	\joliquad{\nodetrentetrois}{\nodetrentecinq}{\nodetrentequatre}{\nodevingtsix} {0}{233}{232}
+	\jolitri {\nodetrentecinq}{\nodetrentehuit}{\nodetrentequatre}                 {3}{255}{64}
+	\joliquad{\nodetrentehuit}{\nodetrentesept}{\nodevingtneuf}{\nodetrentequatre} {1}{255}{139}
+	\jolitri{\nodevingt}{\nodevingtcinq}{\nodevingtetun}                           {7}{62}{255}
+	\jolitri{\nodevingtetun}{\nodevingtdeux}{\nodevingtcinq}                       {4}{100}{255}
+	\jolitri{\nodevingtcinq}{\nodevingtdeux}{\nodevingtsix}                        {0}{153}{250}
+	\jolitri{\nodetrentequatre}{\nodevingtneuf}{\nodevingtsix}                     {0}{255}{203}
+	\joliquad{\nodetrentesept}{\nodetrentesix}{\nodevingthuit}{\nodevingtneuf}     {2}{255}{64}
+	\jolitri{\nodevingtsept}{\nodetrentesix}{\nodevingthuit}                       {50}{201}{0}
+	\joliquad{\nodevingthuit}{\nodevingtsept}{\nodevingtquatre}{\nodevingttrois}   {69}{181}{97}
+	\jolitri{\nodevingttrois}{\nodevingthuit}{\nodevingtneuf}                      {30}{205}{73}
+	\jolitri{\nodevingttrois}{\nodevingtdeux}{\nodevingtneuf}                      {2}{255}{162}
+	\jolitri{\nodevingtsix}{\nodevingtdeux}{\nodevingtneuf}                        {0}{246}{227}
+	
+\end{tikzpicture}
+
+
+% Pourrait plutôt être mis dans le tikzpicture ci-dessus
+\vspace*{7cm}
+\begin{figure}[H]
+	\centering
+	\centerline{
+		\begin{tikzpicture}
+			\node (title) at (0,0) {\fontsize{32pt}{0pt}\selectfont \textbf{Titre de la page}};
+			\node[anchor=north] (subtitle) at ($(title.south)+(0,-0.5)$) {\Huge Quelque chose de super intéressant};
+		\end{tikzpicture}
+	}
+\end{figure}
+
+
+
+\end{document}
